@@ -1,0 +1,14 @@
+[package]
+name = "lsh"
+version = "0.1.0"
+authors = ["Marco Draeger <draeger.marco@gmail.com>"]
+
+[lib]
+name = "utillib"
+
+[[bin]]
+name = "lsh"
+src = "src/main.rs"
+
+[dependencies]
+time = "*"
