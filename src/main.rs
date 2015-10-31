@@ -13,7 +13,7 @@ fn main() {
     let mut all_sentences = HashMap::<u32, WordIdVec>::new();
     let mut next_word_id: u32 = 0;
     let mut similar_pairs = HashSet::new();
-    //
+    
     // setyp all the data structures
     let stdin = std::io::stdin();
     for maybe_line in stdin.lock().lines() {
@@ -46,7 +46,7 @@ fn main() {
         for i in 0 .. (bucket_size - 1) {
             let &ith_id = id_vecs.get(i).unwrap();
             let ref ith_vec = all_sentences[&ith_id];
-            for j in i .. bucket_size {
+            for j in (i+1) .. bucket_size {
                 let &jth_id = id_vecs.get(j).unwrap();
                 if ith_id == jth_id {
                     continue;
