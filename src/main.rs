@@ -10,7 +10,7 @@ fn main() {
     let start = PreciseTime::now();
     let mut mapping = HashMap::<String, u32>::new();
     let mut buckets = HashMap::<u32, Vec<u32>>::new();
-    let mut all_sentences = HashMap::<u32, Vec<u32>>::new();
+    let mut all_sentences = HashMap::<u32, WordIdVec>::new();
     let mut next_word_id: u32 = 0;
     let mut similar_pairs = HashSet::new();
     //
@@ -43,7 +43,7 @@ fn main() {
     for bucket in buckets.keys() {
         let ref id_vecs = buckets[bucket];
         let bucket_size = id_vecs.len();
-        for i in 0 .. bucket_size {
+        for i in 0 .. (bucket_size - 1) {
             let &ith_id = id_vecs.get(i).unwrap();
             let ref ith_vec = all_sentences[&ith_id];
             for j in i .. bucket_size {
